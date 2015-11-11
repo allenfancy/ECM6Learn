@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function* quips(name){
+            yield "您好" + name + "!";
+            yield "嘻嘻，这个还是很不错的哟！"
+            if(name.startWith("x")){
+                yield "您的名字" + name + "首字母是X,很帅哟！"
+            }
+            yield "我们下次再见吧！"
+        }
+
+        var iter = quips('xName');
+        iter.length;
+    </script>
+</head>
+<body>
+
+</body>
+</html>

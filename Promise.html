@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="log">
+
+</div>
+<script>
+        'use strict'
+    var promiseCount = 0;
+    function testPromise(){
+        var thisPromiseCount = ++promiseCount;
+        var log = document.getElementById('log');
+
+        log.insertAdjacentHTML('beforeend',thisPromiseCount+')开始(同步代码开始)<br/>');
+
+        var p1 = new Promise(function(resolve,reject){
+           log.insertAdjacentHTML('beforeend',thisPromiseCount+')Promise 开始(异步代码开始)<br/>');
+            //这只是个创建异步解决的示例
+            window.setTimeout(function(){
+                resolve(thisPromiseCount)
+            },Math.random()*100 + 100);
+        });
+
+        p1.then(function(val){
+            log.insertAdjacentHTML('beforeBegin',val + ')Promise被满足了(异步代码结束)<br/>');
+        });
+        log.insertAdjacentHTML('afterBegin',thisPromiseCount + ')创建了Promise(同步代码结束)<br/><br/>');
+    }
+
+    testPromise();
+    testPromise();testPromise();
+</script>
+</body>
+</html>
